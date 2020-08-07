@@ -1,0 +1,65 @@
+
+
+============
+=: Task 2 :=
+============
+
+- Do you plan on creating any new classes in your design? If so, what classes
+  are you making, what do they store, and what behaviors do they have?
+I plan on making a User class. In this class I describe how to make a client. A User will have the following fields userName(the current nickname of the user), groupChats(a set of the channel names that the user is currently a part of), and a bossSet(. A User can change their nickname with the method assignName and add or remove from their groupChat list and bossList. 
+
+- How do you plan on storing what users are registered on the server?
+The users that are registered to the server will have their ID numbers as keys in the Map that is the server model, and they will be associated to that key.
+
+- How do you plan on keeping track of which user has which user ID, considering
+  the fact that the user's nickname can change over the course of the program?
+The User ID will be the key in the Server Model's map field. So no matter how we change the value associated with the key, the ID will remain the same.
+
+- How do you plan on storing what users are in a channel?
+The groupChats field will have a set of all the channels a User is in. Therefore in order to see all the Users of a channel, we see what Users groupChat fields contain the channel name.
+
+- How do you plan on keeping track of which user is the owner of each channel?
+The field bossSet will be associated with each User, and the names of the channels they are the owner of will be in bossSet.
+
+- Justify your choice of collections (Set, Map, or List) for the
+  collections you use in your design.
+A client should consistently have the same ID number. So it makes sense for the ID number to be associated to each  user of the server, and to label each  User value.. Therefore a map is a logical choice of a collection to use the structure of the server. I use sets for the files groupChats and bossSet because we are not going to have channels with the same names so a set is an efficient way to organize a collection of channel names.
+
+
+============
+=: Task 3 :=
+============
+
+- Did you make any changes to your design while doing this task? Why?
+No. But I added functions, getFriends and getTMap (for testing) to ServerModel.
+getFriends made it easier to create recipients lists in Command in the long run. 
+
+============
+=: Task 4 :=
+============
+
+- Did you make any changes to your design while doing this task? Why?
+No. But I added many more functions to ServerModel.java so that I do not directly alter the server model in the updateServerModel in commands. I ended making more public functions in Users so I could use them in ServerModel and eventually use those ServerModel public functions in Users in Commands.java
+============
+=: Task 5 :=
+============
+
+- How do you plan on keeping track of which channels are invite-only?
+ I added another field for Users in my Users class. I added a map that associates a boolean value to the the string that is a name of channel that user owns. Any String in a User's bossSet is in the users inviteMap. If the boolean is true, then the group is invite only, if it is false than the channel is public.
+- Will you make any changes to your work from before in order to make
+  implementing invite-only channels easier?
+No. I think the way I implemented now is a very feasible solution and divides the data amongst the users well.
+
+
+============
+=: Task 6 :=
+============
+
+- Did you have to make any changes to your design in Task 6? Why?
+I realized I had double functionality. I had 2 functions that essentially performed the same task accept that one iterated over all users and the other iterated over the owner user only. But since I call them together there was no point of doing both.
+
+- If you were to redo this assignment, what changes (if any) would you make in
+  how you designed your code?
+I believe making my server model map-based was the most logical thing to do. Although I could see a linked list of users or set of Users working. Making a Users class made the project easier for me to visualize. If I could do one thing to improve my code maybe decrease the amount of data structures I have in my code some how.
+
+
